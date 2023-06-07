@@ -1,0 +1,40 @@
+{
+  "width": 359,
+  "height": 728,
+  "cx": [
+    [ "User", 169 ],
+    [ "Candidate", 62 ],
+    [ "XT", 169 ],
+    [ "Company", 299 ],
+    [ "APPLY", 62 ],
+    [ "Job", 169 ],
+    [ "BELONGS TO", 299 ],
+    [ "BELONGS TO1", 169 ],
+    [ "Category", 299 ]
+  ],
+  "cy": [
+    [ "User", 136 ],
+    [ "Candidate", 339 ],
+    [ "XT", 339 ],
+    [ "Company", 339 ],
+    [ "APPLY", 525 ],
+    [ "Job", 525 ],
+    [ "BELONGS TO", 525 ],
+    [ "BELONGS TO1", 685 ],
+    [ "Category", 685 ]
+  ],
+  "shift": [
+    [ "XT,User,0", 0 ],
+    [ "XT,Candidate,0", 0 ],
+    [ "XT,Company,0", 0 ],
+    [ "APPLY,Candidate,0", 0 ],
+    [ "APPLY,Job,0", 0 ],
+    [ "BELONGS TO,Company,0", 0 ],
+    [ "BELONGS TO,Job,0", 0 ],
+    [ "BELONGS TO1,Job,0", 0 ],
+    [ "BELONGS TO1,Category,0", 0 ]
+  ],
+  "ratio": [
+    [ "XT,User,0", 1.0 ]
+  ]
+}
