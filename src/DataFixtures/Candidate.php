@@ -18,6 +18,7 @@ class CandidateFixtures extends Fixture
 
         // mot de passe julie
         $candidate->setPassword('$2y$13$Dt.3iMjSc9fHE8YXzh3o0.8qo.i1EpoTHqBcQOpmFajr8gIyJEfHa');
+        $candidate->setGender("Madame");
         $candidate->setFirstname("Julie");
         $candidate->setLastname("Martin");
         $candidate->setBirthday(new DateTime("1987-05-24"));

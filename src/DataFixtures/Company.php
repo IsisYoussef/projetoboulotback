@@ -19,6 +19,7 @@ class CompanyFixtures extends Fixture
 
         // mot de passe entreprise
         $company->setPassword('$2y$13$7GrYE5KTBth3p/9s8OijaeoIqF5Jd8uxIWHXY8ZCSjYypw0nH3kOa');
+        $company->setName("O'boulot");
         $company->setSiret("80365956985425");
         $company->setFirstname("GÃ©rad");
         $company->setLastname("Duroy");

@@ -34,8 +34,6 @@ class Oboulot extends Fixture
         $admin->setCreatedAt(new Datetime("2023-06-09"));
         $admin->setRoles(['ROLE_ADMIN']);
          
-    
-    
 
         $manager->persist($admin);
 
@@ -45,6 +43,7 @@ class Oboulot extends Fixture
         $managerUser->setEmail("manager@oboulot.io");
         // mot de passe isis
         $managerUser->setPassword('$2y$13$l4PG0gvTr3W1rhaUSL6xj.4jAKS33.vkgfx/EH4KzKPUx6xeS11Dq');
+        $managerUser->setGender("Madame");
         $managerUser->setFirstname("Isis");
         $managerUser->setLastname("manager");
         $managerUser->setPhone("1111111111");
@@ -63,6 +62,7 @@ class Oboulot extends Fixture
         $employee->setEmail("employee@oboulot.io");
         // mot de passe carole
         $employee->setPassword('2y$13$SHc9Lyykg//iQPIKtSoLA.wy3Esz5LCX024q1GneTxZx6AlNb3006');
+        $employee->setGender("Madame");
         $employee->setFirstname("Carole");
         $employee->setLastname("employee");
         $employee->setPhone("2222222222");
@@ -75,7 +75,7 @@ class Oboulot extends Fixture
 
         $manager->persist($employee);
 
-    
+        
 
         // ---- Creation de category ----
         
