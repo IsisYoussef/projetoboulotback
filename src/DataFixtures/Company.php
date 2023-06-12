@@ -14,6 +14,7 @@ class CompanyFixtures extends Fixture
         //---- Creation Company ----
 
         $company = new Company();
+        $type = 'company';
         $company->setEmail("entreprise@recrut.com");
 
         // mot de passe entreprise

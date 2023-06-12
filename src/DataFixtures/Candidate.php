@@ -29,6 +29,7 @@ class CandidateFixtures extends Fixture
         $candidate->setCreatedAt(new Datetime("2023-09-04"));
         $candidate->setRoles(['ROLE_CANDIDATE']);
 
+
         $manager->persist($candidate);
 
 

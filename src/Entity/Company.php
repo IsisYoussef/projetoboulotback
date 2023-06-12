@@ -12,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Company extends User
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -33,6 +34,11 @@ class Company extends User
      * @ORM\OneToMany(targetEntity=Job::class, mappedBy="company")
      */
     private $jobs;
+
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $companyName;
 
     public function __construct()
     {
@@ -94,6 +100,18 @@ class Company extends User
                 $job->setCompany(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCompanyName(): ?string
+    {
+        return $this->companyName;
+    }
+
+    public function setCompanyName(?string $companyName): self
+    {
+        $this->companyName = $companyName;
 
         return $this;
     }

@@ -23,6 +23,7 @@ class Oboulot extends Fixture
         $admin->setEmail("admin@oboulot.io");
         // mot de passe gwen
         $admin->setPassword('$2y$13$XgoXu6T1z3xSvBlajvRRT.XbXikblcTeZtwpzDdu.XmzLjC8BSuU2');
+        $admin->setGender("Madame");
         $admin->setFirstname("Gwen");
         $admin->setLastname("admin");
         $admin->setPhone("0000000000");

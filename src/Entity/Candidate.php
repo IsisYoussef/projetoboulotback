@@ -97,4 +97,5 @@ class Candidate extends User
 
         return $this;
     }
+
 }
