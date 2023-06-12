@@ -38,7 +38,7 @@ class Company extends User
     /**
      * @ORM\Column(type="string", length=64, nullable=true)
      */
-    private $companyName;
+    private $name;
 
     public function __construct()
     {
@@ -104,14 +104,14 @@ class Company extends User
         return $this;
     }
 
-    public function getCompanyName(): ?string
+    public function getName(): ?string
     {
-        return $this->companyName;
+        return $this->name;
     }
 
-    public function setCompanyName(?string $companyName): self
+    public function setName(?string $name): self
     {
-        $this->companyName = $companyName;
+        $this->name = $name;
 
         return $this;
     }
