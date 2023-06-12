@@ -33,7 +33,7 @@ class Oboulot extends Fixture
         $admin->setPresentation("Je suis admin");
         $admin->setCreatedAt(new Datetime("2023-06-09"));
         $admin->setRoles(['ROLE_ADMIN']);
-        // comment gerer le type not nul $admin->type("Candidat"); 
+         
     
     
 
