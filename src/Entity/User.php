@@ -20,72 +20,99 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @groups({"candidate_browse"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $address;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $postalCode;
 
     /**
      * @ORM\Column(type="string", length=64)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $city;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $presentation;
 
     /**
      * @ORM\Column(type="datetime")
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="string", length=15, nullable=true)
+     * @groups({"candidate_browse","candidate_read"})
+     * @groups({"company_browse", "company_read"})
      */
     private $gender;
 

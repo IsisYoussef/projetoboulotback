@@ -18,17 +18,23 @@ class Candidate extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
+     * @groups({"candidate_browse"})
+     * @groups({"candidate_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
      * @groups({"job_read"})
+     * @groups({"candidate_browse"})
+     * @groups({"candidate_read"})
      */
     private $birthday;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @groups({"candidate_browse"})
+     * @groups({"candidate_read"})
      */
     private $avatar;
 
