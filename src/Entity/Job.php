@@ -6,6 +6,7 @@ use App\Repository\JobRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=JobRepository::class)
@@ -16,66 +17,80 @@ class Job
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * 
+     * @groups({"job_browse", "job_read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @groups({"job_browse", "job_read"})
      */
     private $entitled;
 
     /**
      * @ORM\Column(type="datetime")
+     * @groups({"job_browse", "job_read"})
      */
     private $dateFrom;
 
     /**
      * @ORM\Column(type="datetime")
+     * @groups({"job_browse", "job_read"})
      */
     private $dateTill;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @groups({"job_browse", "job_read"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="integer")
+     * @groups({"job_browse", "job_read"})
      */
     private $nbVacancy;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @groups({"job_browse", "job_read"})
      */
     private $place;
 
     /**
      * @ORM\Column(type="text")
+     * @groups({"job_browse", "job_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
+     * @groups({"job_browse", "job_read"})
      */
     private $isValid;
 
     /**
      * @ORM\Column(type="datetime")
+     * @groups({"job_browse", "job_read"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @groups({"job_browse", "job_read"})
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="datetime")
+     * @groups({"job_browse", "job_read"})
      */
     private $publishedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Apply::class, mappedBy="Job")
+     * @groups({"job_browse", "job_read"})
      */
     private $applies;
 

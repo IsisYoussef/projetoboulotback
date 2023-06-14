@@ -23,6 +23,22 @@ security:
                 property: email
         
     firewalls:
+        login:
+            pattern: ^/api/login
+            stateless: true
+            provider: chain_provider
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                username_path: email
+
+        api:
+            pattern:   ^/api
+            stateless: true
+            provider: chain_provider
+            jwt: ~
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -42,6 +58,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+
 
 when@test:
     security:
