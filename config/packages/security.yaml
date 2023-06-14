@@ -32,6 +32,11 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
                 username_path: email
+            custom_authenticator: App\Security\AuthentificatorAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
 
         api:
             pattern:   ^/api
@@ -59,7 +64,13 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        
+        # /api/candidats
+        - {path: ^\/back\/\w+\/\d+\}
 
+
+        # /api/entreprises
+        - {path:^\/api\/}
 
 when@test:
     security:
