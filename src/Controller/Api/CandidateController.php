@@ -28,7 +28,7 @@ class CandidateController extends AbstractController
     {
         $allCandidates = $candidateRepository->findAll();
 
-        return $this->json([
+        return $this->json(
             $allCandidates,
             200,
             [],
@@ -38,7 +38,7 @@ class CandidateController extends AbstractController
                     "candidate_browse"
                 ]
             ]
-        ]);
+        );
     }
 
     /**

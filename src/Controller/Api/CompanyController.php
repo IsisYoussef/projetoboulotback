@@ -30,7 +30,7 @@ class CompanyController extends AbstractController
     {
         $allCompanies = $companyRepository->findAll();
 
-        return $this->json([
+        return $this->json(
             $allCompanies,
             200,
             [],
@@ -40,7 +40,7 @@ class CompanyController extends AbstractController
                     "company_browse"
                 ]
             ]
-        ]);
+        );
     }
 
     /**

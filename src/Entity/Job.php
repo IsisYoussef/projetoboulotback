@@ -24,72 +24,73 @@ class Job
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $entitled;
 
     /**
      * @ORM\Column(type="datetime")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $dateFrom;
 
     /**
      * @ORM\Column(type="datetime")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $dateTill;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $duration;
 
     /**
      * @ORM\Column(type="integer")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $nbVacancy;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $place;
 
     /**
      * @ORM\Column(type="text")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $isValid;
 
     /**
      * @ORM\Column(type="datetime")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="datetime")
-     * @groups({"job_read"})
+     * @groups({"job_browse", "job_read"})
      */
     private $publishedAt;
 
     /**
      * @ORM\OneToMany(targetEntity=Apply::class, mappedBy="Job")
+     * @groups({"job_browse", "job_read"})
      */
     private $applies;
 

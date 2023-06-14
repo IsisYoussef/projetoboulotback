@@ -28,7 +28,7 @@ class JobController extends AbstractController
         // Job's list
         $allJobs = $jobRepository->findAll();
 
-        return $this->json([
+        return $this->json(
             $allJobs,
             200,
             [],
@@ -38,7 +38,7 @@ class JobController extends AbstractController
                     "job_browse"
                 ]
             ]
-        ]);
+        );
     }
 
     /**
