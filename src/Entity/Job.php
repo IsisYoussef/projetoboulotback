@@ -101,6 +101,7 @@ class Job
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="jobs")
+     * @groups({"job_browse", "job_read"})
      */
     private $category;
 
