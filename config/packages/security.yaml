@@ -5,14 +5,52 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        # used to reload user from session & other features (e.g. switch_user)
+        chain_provider:
+            chain:
+                providers: [app_user_provider, app_candidate_provider, app_company_provider]
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        app_candidate_provider:
+            entity:
+                class: App\Entity\Candidate
+                property: email
+        app_company_provider:
+            entity:
+                class: App\Entity\Company
+                property: email
+        
     firewalls:
+        login:
+            pattern: ^/api/login
+            stateless: true
+            provider: chain_provider
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                username_path: email
+            custom_authenticator: App\Security\AuthentificatorAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+
+        api:
+            pattern:   ^/api
+            stateless: true
+            provider: chain_provider
+            jwt: ~
+
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: chain_provider
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -25,6 +63,36 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        
+        # /api/candidats/{id}
+        - {path: ^\/api\/\candidats\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
+        #- {path: ^\/api\/\candidats\/\d+$, roles: ROLE_USER, ROLE_CANDIDATE, methods: [GET]}
+        
+
+
+        # /api/entreprises/{id}
+        - {path: ^\/api\/\entreprises/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
+        #- {path: ^\/api\/\entreprises\/\d+$, roles: ROLE_USER, ROLE_COMPANY, methods: [GET]}
+
+
+
+        # /api/offres/{id}
+        - {path: ^\/api\/\offres$, roles: PUBLIC_ACCESS}
+        - {path: ^\/api\/\offres\/\d+$, roles: PUBLIC_ACCESS}
+        - {path: ^\/api\/\offres\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
+
+        # /
+        
+
+    
+    role_hierarchy:
+        # le ROLE_ADMIN inclus le ROLE_MANAGER
+        ROLE_ADMIN:   ROLE_MANAGER
+        # le ROLE_MANAGER inclus le ROLE_USER et les roles clients
+        ROLE_MANAGER: [ROLE_USER, ROLE_CANDIDATE, ROLE_COMPANY]
+
+        
 
 when@test:
     security:
