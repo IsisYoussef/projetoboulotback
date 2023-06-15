@@ -69,20 +69,16 @@ security:
         - {path: ^\/api\/\candidats\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
         #- {path: ^\/api\/\candidats\/\d+$, roles: ROLE_USER, ROLE_CANDIDATE, methods: [GET]}
         
-
-
         # /api/entreprises/{id}
         - {path: ^\/api\/\entreprises/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
         #- {path: ^\/api\/\entreprises\/\d+$, roles: ROLE_USER, ROLE_COMPANY, methods: [GET]}
-
-
 
         # /api/offres/{id}
         - {path: ^\/api\/\offres$, roles: PUBLIC_ACCESS}
         - {path: ^\/api\/\offres\/\d+$, roles: PUBLIC_ACCESS}
         - {path: ^\/api\/\offres\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
 
-        # /
+        
         
 
     
