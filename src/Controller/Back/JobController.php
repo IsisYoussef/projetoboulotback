@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/back/job", name="app_back_job")
+ * @Route("/back/job", name="app_back_job_")
  */
 class JobController extends AbstractController
 {
     /**
-     * @Route("/", name="app_back_job_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      * 
 
      */
@@ -30,7 +30,7 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="app_back_job_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, JobRepository $jobRepository): Response
     {
@@ -51,7 +51,7 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="job_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(?Job $job): Response
     {
@@ -63,9 +63,9 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="job_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Job $job, JobRepository $jobRepository): Response
+    public function edit(Request $request, ?Job $job, JobRepository $jobRepository): Response
     {
         $form = $this->createForm(JobType::class, $job);
         $form->handleRequest($request);
@@ -83,7 +83,7 @@ class JobController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="job_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, Job $job, JobRepository $jobRepository): Response
     {

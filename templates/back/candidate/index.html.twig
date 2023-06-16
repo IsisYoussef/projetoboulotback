@@ -47,8 +47,9 @@
                 <td>{{ candidate.birthday ? candidate.birthday|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ candidate.avatar }}</td>
                 <td>
-                    <a href="{{ path('candidate_show', {'id': candidate.id}) }}">show</a>
-                    <a href="{{ path('candidate_edit', {'id': candidate.id}) }}">edit</a>
+                
+                    
+                    
                 </td>
             </tr>
         {% else %}
@@ -59,5 +60,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('candidate_new') }}">Create new</a>
+    <a href="{{ path('app_back_candidate_new') }}">Create new</a>
 {% endblock %}

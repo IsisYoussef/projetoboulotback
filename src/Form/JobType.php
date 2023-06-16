@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
+use App\Entity\Company;
 use App\Entity\Job;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,8 +26,18 @@ class JobType extends AbstractType
             ->add('createdAt')
             ->add('updatedAt')
             ->add('publishedAt')
-            ->add('company')
-            ->add('category')
+            ->add('company', EntityType::class, [
+                "multiple" => false,
+                "expanded" => true,
+                "class" => Company::class,
+                'choice_label' => 'company',
+            ])
+            ->add('category', EntityType::class, [
+                "multiple" => false,
+                "expanded" => true,
+                "class" => Category::class,
+                'choice_label' => 'category',
+            ])
         ;
     }
 
