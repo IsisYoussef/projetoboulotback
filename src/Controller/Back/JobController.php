@@ -18,8 +18,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class JobController extends AbstractController
 {
     /**
-     * @Route("/", name="index", methods={"GET"})
-     * 
+     * @Route", methods={"GET"})
+     * te("/", name="ind
 
      */
     public function index(JobRepository $jobRepository): Response

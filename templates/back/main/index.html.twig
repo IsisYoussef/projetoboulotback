@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue dans le Back-Office O'Boulot{% endblock %}
+{% block title %}Welcome Backoffice{% endblock %}
 
 {% block body %}
-
-<h1>Je suis dans le Back Office</h1>
-
+    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'job' } %}
+    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'candidate' } %}
+    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'company' } %}
+    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'user' } %}
 {% endblock %}
