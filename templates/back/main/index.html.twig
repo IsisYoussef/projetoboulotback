@@ -3,8 +3,11 @@
 {% block title %}Welcome Backoffice{% endblock %}
 
 {% block body %}
-    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'job' } %}
-    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'candidate' } %}
-    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'company' } %}
-    {% include 'back/partials/_card_link.html.twig' with { 'entity' : 'user' } %}
+    <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Offres</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Voir</a>
+  </div>
+</div>
 {% endblock %}
