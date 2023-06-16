@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/back/company", name="app_back_company")
+ * @Route("/back/company", name="app_back_company_")
  */
 class CompanyController extends AbstractController
 {
     /**
-     * @Route("/", name="company_index", methods={"GET"})
+     * @Route("/", name="index", methods={"GET"})
      * 
 
      */
@@ -30,7 +30,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="company_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, CompanyRepository $companyRepository): Response
     {
@@ -51,11 +51,11 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="company_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(?Company $company): Response
     {
-        if ($candidate === null){throw $this->createNotFoundException("cette entreprise n'existe pas");}
+        if ($company === null){throw $this->createNotFoundException("cette entreprise n'existe pas");}
 
         return $this->render('back/company/show.html.twig', [
             'company' => $company,
@@ -63,7 +63,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="company_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, ?Company $company, CompanyRepository $companyRepository): Response
     {
@@ -83,7 +83,7 @@ class CompanyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="company_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, ?Company $company, CompanyRepository $companyRepository): Response
     {

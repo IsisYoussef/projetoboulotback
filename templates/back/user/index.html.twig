@@ -42,10 +42,7 @@
                 <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.gender }}</td>
-                <td>
-                    <a href="{{ path('app_back_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_back_user_edit', {'id': user.id}) }}">edit</a>
-                </td>
+                
             </tr>
         {% else %}
             <tr>

@@ -29,6 +29,7 @@
         </thead>
         <tbody>
         {% for candidate in candidates %}
+        {{ dump(candidate) }}
             <tr>
                 <td>{{ candidate.id }}</td>
                 <td>{{ candidate.email }}</td>
@@ -47,11 +48,10 @@
                 <td>{{ candidate.birthday ? candidate.birthday|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ candidate.avatar }}</td>
                 <td>
-                
-                    
                     
                 </td>
-            </tr>
+                    
+            </tr> 
         {% else %}
             <tr>
                 <td colspan="17">no records found</td>

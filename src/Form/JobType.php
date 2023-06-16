@@ -26,18 +26,18 @@ class JobType extends AbstractType
             ->add('createdAt')
             ->add('updatedAt')
             ->add('publishedAt')
-            ->add('company', EntityType::class, [
-                "multiple" => false,
-                "expanded" => true,
-                "class" => Company::class,
-                'choice_label' => 'company',
-            ])
-            ->add('category', EntityType::class, [
-                "multiple" => false,
-                "expanded" => true,
-                "class" => Category::class,
-                'choice_label' => 'category',
-            ])
+            //->add('company', EntityType::class, [
+            //   "multiple" => false,
+            //    "expanded" => true,
+            //    "class" => Company::class,
+            //    'choice_label' => 'company',
+            //])
+            //->add('category', EntityType::class, [
+            //    "multiple" => false,
+            //    "expanded" => true,
+            //    "class" => Category::class,
+            //    'choice_label' => 'category',
+            //])
         ;
     }
 
