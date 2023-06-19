@@ -111,6 +111,9 @@ class Oboulot extends Fixture
         $allJobs[] = $newJob;
 
 }
+
+        $faker = \Faker\Factory::create();
+        $fakerFr = \Faker\Factory::create('fr_FR');
     $manager->flush();
     
     }
