@@ -3,24 +3,58 @@
 namespace App\Form;
 
 use App\Entity\Candidate;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormTypeInterface;
 
 class CandidateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
+            ->add('email', EmailType::class, [
+                "label" => "Votre email",
+            ])
             ->add('roles')
-            ->add('password')
-            ->add('firstname')
-            ->add('lastname')
+            ->add('password', PasswordType::class, [
+                "mapped" => false,
+                "label" => "Votre mot de passe",
+            ])
+            ->add('firstname', TextType::class, [
+                "label" => "Prénom",
+                "attr" => [
+                    "placeholder" => "Votre prénom"
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                "label" => "Nom",
+                "attr" => [
+                    "placeholder" => "Votre nom"
+                ]
+            ])
             ->add('phone')
-            ->add('address')
-            ->add('postalCode')
-            ->add('city')
+            ->add('address', TextType::class, [
+                "label" => "Adresse",
+                "attr" => [
+                    "placeholder" => "Votre adresse"
+                ]
+            ])
+            ->add('postalCode', TextType::class, [
+                "label" => "Code postal",
+                "attr" => [
+                    "placeholder" => "Code postal"
+                ]
+            ])
+            ->add('city', TextType::class, [
+                "label" => "Ville",
+                "attr" => [
+                    "placeholder" => "Votre ville"
+                ]
+            ])
             ->add('presentation')
             ->add('createdAt')
             ->add('updatedAt')
