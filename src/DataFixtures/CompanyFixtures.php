@@ -34,6 +34,33 @@ class CompanyFixtures extends Fixture
 
         $faker = \Faker\Factory::create();
         $fakerFr = \Faker\Factory::create('fr_FR');
+        $faker->addProvider(new \Faker\Provider\fr_FR\Company($faker));
+
+        //50 entreprises
+        /** @var Company[] */
+        $allCompanies = [];
+        for ($i=0; $i < 50; $i++) {
+
+            //1. nouvelle instance
+            $newCompany = new Company();
+
+            //2. remplir les propriétés
+            $newCompany->setEmail($faker->freeEmail());
+            $newCompany->setPassword("company");
+            $newCompany->setName($faker->company());
+            $newCompany->setSiret($faker->siret());
+            $newCompany->setFirstname($fakerFr->firstName());
+            $newCompany->setLastname($fakerFr->lastName());
+            $newCompany->setPhone($fakerFr->phoneNumber());
+            $newCompany->setAddress($fakerFr->Address());
+            $newCompany->setPostalCode("75000");
+            $newCompany->setCity("Paris");
+            $newCompany->setpresentation("Entreprise dynamique, humaine et innovante");
+            $newCompany->setCreatedAt(new Datetime('now'));
+            $newCompany->setRoles(['ROLE_COMPANY']);
+
+            $manager->persist($newCompany);
+        }
 
         $manager->flush();
     }
