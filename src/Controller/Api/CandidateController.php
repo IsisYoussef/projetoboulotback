@@ -100,7 +100,7 @@ class CandidateController extends AbstractController
 
         $hashedPassword = $userPasswordHasherInterface->hashPassword($candidate, $plainPassword);
 
-        $candidate->setpassword($hashedPassword);
+        $candidate->setPassword($hashedPassword);
 
         $candidateRepository->add($candidate, true);
 
