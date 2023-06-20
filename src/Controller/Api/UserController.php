@@ -2,11 +2,18 @@
 
 namespace App\Controller\Api;
 
+use App\Entity\User;
+use App\Repository\CandidateRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityNotFoundException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserController extends AbstractController
 {
@@ -58,5 +65,40 @@ class UserController extends AbstractController
                 ]
             ]
                 );
+    }
+
+    /**
+     * Add User
+     * @Route("", name="add", methods={"POST"})
+     */
+    public function add(
+        Request $request,
+        SerializerInterface $serializerInterface,
+        UserRepository $userRepository,
+        ValidatorInterface $validatorInterface,
+        UserPasswordHasherInterface $userPasswordHasherInterface
+    ) 
+    {
+        $jsonContent = $request->getContent();
+        try {
+            $user = $serializerInterface->deserialize($jsonContent, User::class, 'json');
+        } catch (EntityNotFoundException $entityNotFoundException) {
+            return $this->json("Denormalisation : " . $entityNotFoundException->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+
+        $errors = $validatorInterface->validate($user);
+        if (count($errors) > 0) {
+            return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        $plainPassword = $user->getPassword();
+
+        $hashedPassword = $userPasswordHasherInterface->hashPassword($user, $plainPassword);
+
+        $user->setPassword($hashedPassword);
+
+        $userRepository->add($user, true);
+
+        return $this->json($user, Response::HTTP_CREATED, [], ["groups"=>["candidate_read"]]);
     }
 }
