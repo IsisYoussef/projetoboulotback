@@ -108,7 +108,7 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * Edit Job
+     * Edit Candidat
      * @Route("/{id}", name="edit", requirements={"id"="\d+"}, methods={"PUT", "PATCH"})
      */
     public function edit($id, Request $request, SerializerInterface $serializerInterface, CandidateRepository $candidateRepository)

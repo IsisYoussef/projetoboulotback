@@ -24,6 +24,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"candidate_browse"})
+     * @groups({"user_browse", "user_read"})
      */
     private $id;
 
@@ -31,6 +32,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $email;
 
@@ -38,6 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="json")
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $roles = [];
 
@@ -46,6 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $password;
 
@@ -53,6 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $firstname;
 
@@ -60,6 +65,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $lastname;
 
@@ -67,6 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=64)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $phone;
 
@@ -74,6 +81,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=255)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $address;
 
@@ -81,6 +89,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=64)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $postalCode;
 
@@ -88,6 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=64)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $city;
 
@@ -95,6 +105,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="text", nullable=true)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $presentation;
 
@@ -102,6 +113,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="datetime")
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $createdAt;
 
@@ -109,6 +121,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="datetime", nullable=true)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $updatedAt;
 
@@ -116,6 +129,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string", length=15, nullable=true)
      * @groups({"candidate_browse","candidate_read"})
      * @groups({"company_browse", "company_read"})
+     * @groups({"user_browse", "user_read"})
      */
     private $gender;
 

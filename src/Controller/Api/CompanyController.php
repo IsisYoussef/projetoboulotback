@@ -15,7 +15,6 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * Companies list
  * @Route("/api/entreprises", name="app_api_company_")
  */
 class CompanyController extends AbstractController
@@ -128,5 +127,21 @@ class CompanyController extends AbstractController
         $companyRepository->remove($company, true);
 
         return $this->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+    * @Route("/me",name="me", methods={"GET"})
+     *
+     * @return void
+     */
+    public function getUserData()
+    {
+        /** @var App\Entity\Company  */
+        $user = $this->getUser();
+
+        return $this->json($user, 
+    200,
+[],
+);
     }
 }
