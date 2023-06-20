@@ -32,6 +32,9 @@ class CompanyFixtures extends Fixture
 
         $manager->persist($company);
 
+        $faker = \Faker\Factory::create();
+        $fakerFr = \Faker\Factory::create('fr_FR');
+
         $manager->flush();
     }
 }

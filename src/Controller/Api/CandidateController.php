@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -21,7 +22,7 @@ class CandidateController extends AbstractController
 {
     /**
      * Candidate's list
-     * @Route("/", name="browse")
+     * @Route("", name="browse", methods={"GET"})
      * @return JsonResponse
      */
     public function browse(CandidateRepository $candidateRepository): JsonResponse
@@ -79,8 +80,10 @@ class CandidateController extends AbstractController
         Request $request,
         SerializerInterface $serializerInterface,
         CandidateRepository $candidateRepository,
-        ValidatorInterface $validatorInterface
-    ) {
+        ValidatorInterface $validatorInterface,
+        UserPasswordHasherInterface $userPasswordHasherInterface
+    ) 
+    {
         $jsonContent = $request->getContent();
         try {
             $candidate = $serializerInterface->deserialize($jsonContent, Candidate::class, 'json');
@@ -92,6 +95,12 @@ class CandidateController extends AbstractController
         if (count($errors) > 0) {
             return $this->json($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
+
+        $plainPassword = $candidate->getPassword();
+
+        $hashedPassword = $userPasswordHasherInterface->hashPassword($candidate, $plainPassword);
+
+        $candidate->setPassword($hashedPassword);
 
         $candidateRepository->add($candidate, true);
 
@@ -125,5 +134,22 @@ class CandidateController extends AbstractController
         $candidateRepository->remove($candidate, true);
 
         return $this->json(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+    * @Route("/me",name="me", methods={"GET"})
+     *
+     * @return void
+     */
+    public function getUserData()
+    {
+        /** @var App\Entity\Candidat  */
+        $user = $this->getUser();
+
+        //var_dump($user);
+        return $this->json($user, 
+    200,
+[],
+);
     }
 }
