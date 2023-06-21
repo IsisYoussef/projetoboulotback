@@ -18,7 +18,6 @@ class Candidate extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
-     * @groups({"candidate_browse"})
      * @groups({"candidate_read"})
      */
     private $id;

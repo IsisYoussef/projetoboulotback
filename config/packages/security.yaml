@@ -64,6 +64,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+
+        # back-office
+        - { path: ^/backoffice$, roles: ROLE_USER }
+        - { path: ^/back\/\w+\$, roles: ROLE_USER }
         
         # /api/candidats/{id}
         - {path: ^\/api\/\candidats\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}

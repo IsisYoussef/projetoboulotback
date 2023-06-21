@@ -19,7 +19,7 @@ class Company extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
-     * @groups({"company_browse", "company_read"})
+     * @groups({"company_read"})
      */
     private $id;
 
