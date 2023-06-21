@@ -33,7 +33,7 @@ class Oboulot extends Fixture
         $admin->setPresentation("Je suis admin");
         $admin->setCreatedAt(new Datetime("2023-06-09"));
         $admin->setRoles(['ROLE_ADMIN']);
-         
+
 
         $manager->persist($admin);
 
@@ -75,48 +75,53 @@ class Oboulot extends Fixture
 
         $manager->persist($employee);
 
-        
+
 
         // ---- Creation de category ----
-        
-        $categories = ["Evenementiel", "Secretariat", "Administratif", "Batiment", "restauration"];
+
+        $categories = ["Evenementiel", "Secrétariat", "Administratif", "Batiment", "Restauration", "Saisie informatique", "Phoning","Archivage", "Street-marketing"];
         $allCategory = [];
         foreach ($categories as $category) {
-        $newCategory = new Category();
-        $newCategory->setTitle($category);
+            $newCategory = new Category();
+            $newCategory->setTitle($category);
 
-        $manager->persist($newCategory);
+            $manager->persist($newCategory);
 
-        $allCategory[] = $newCategory;
+            $allCategory[] = $newCategory;
         }
-        
+
         //---- Creation Job ----
-
-        $allJobs = [];
-        for ($i=0; $i <20; $i++) {
-        $newJob = new Job();
-
-        $newJob->setEntitled("Offre n°" . $i);
-        $newJob->setDateFrom(new DateTime("2023-02-03"));
-        $newJob->setDateTill(new DateTime("2023-02-13"));
-        $newJob->setNbVacancy(1);
-        $newJob->setPlace("Région parisienne");
-        $newJob->setDescription("Cette offre d'emploi est la meillleure du monde car elle proposait par l'entreprise la plus géniale");
-        $newJob->setIsValid(true);
-        $newJob->setCreatedAt(new DateTime("2023-05-25"));
-        $newJob->setPublishedAt(new DateTime("2023-05-30"));
-
-        $manager->persist($newJob);
-
-        $allJobs[] = $newJob;
-
-}
 
         $faker = \Faker\Factory::create();
         $fakerFr = \Faker\Factory::create('fr_FR');
-    $manager->flush();
-    
+
+        $allJobs = [];
+        for ($i=0; $i <50; $i++) {
+            $newJob = new Job();
+
+            $newJob->setEntitled("Offre n°" . $i . " - " . $faker->jobTitle());
+            $newJob->setDateFrom(new DateTime("2023-02-03"));
+            $newJob->setDateTill(new DateTime("2023-02-13"));
+            $newJob->setNbVacancy(mt_rand(1, 5));
+            $newJob->setPlace("Région parisienne");
+            $newJob->setDescription("lorem ipsum synopsis");
+            $newJob->setIsValid(true);
+            $newJob->setCreatedAt(new DateTime('now'));
+            $newJob->setPublishedAt(new DateTime('now'));
+
+            $manager->persist($newJob);
+
+            $allJobs[] = $newJob;
+
+            //création des associations entre category et job
+            foreach ($allCategory as $category) {
+                $randomCategory = $allCategory[mt_rand(0, count($allCategory)-1)];
+                $newJob->setCategory($randomCategory);
+                $manager->persist($newJob);
+
+            }
+        }
+
+        $manager->flush();
     }
-
-
 }
