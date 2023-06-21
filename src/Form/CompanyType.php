@@ -4,6 +4,11 @@ namespace App\Form;
 
 use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,22 +17,64 @@ class CompanyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('roles')
-            ->add('password')
-            ->add('firstname')
-            ->add('lastname')
+            ->add('email', EmailType::class, [
+                "label" => "Votre email",
+            ])
+            ->add('roles', ChoiceType::class, [
+                "multiple" => true,
+                "expanded" => true,
+                'choices' => [
+                    "Company"
+                ]
+            ])
+            ->add('password', PasswordType::class, [
+                "mapped" => false,
+                "label" => "Votre mot de passe",
+            ])
+            ->add('firstname', TextType::class, [
+                "label" => "Prénom",
+                "attr" => [
+                    "placeholder" => "Votre prénom"
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                "label" => "Nom",
+                "attr" => [
+                    "placeholder" => "Votre nom"
+                ]
+            ])
             ->add('phone')
-            ->add('address')
-            ->add('postalCode')
-            ->add('city')
-            ->add('presentation')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('gender')
+            ->add('address', TextType::class, [
+                "label" => "Adresse",
+                "attr" => [
+                    "placeholder" => "Votre adresse"
+                ]
+            ])
+            ->add('postalCode', TextType::class, [
+                "label" => "Code postal",
+                "attr" => [
+                    "placeholder" => "Code postal"
+                ]
+            ])
+            ->add('city', TextType::class, [
+                "label" => "Ville",
+                "attr" => [
+                    "placeholder" => "Votre ville"
+                ]
+            ])
+            ->add('presentation', TextType::class, [
+                "label" => "présentation"
+            ])
+            ->add('createdAt', DateTimeType::class)
+            ->add('updatedAt', DateTimeType::class)
+            ->add('gender', TextType::class, [
+                "label" => "genre"
+            ])
             ->add('siret')
             ->add('logo')
-            ->add('name')
+            ->add('name', TextType::class, [
+                "label" => "nom de l'entreprise"
+            ])
         ;
     }
 
