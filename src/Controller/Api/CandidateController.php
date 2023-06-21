@@ -146,7 +146,7 @@ class CandidateController extends AbstractController
         /** @var App\Entity\Candidat  */
         $user = $this->getUser();
 
-        //var_dump($user);
+        
         return $this->json($user, 
     200,
 [],
