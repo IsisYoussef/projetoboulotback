@@ -20,7 +20,6 @@ class CandidateType extends AbstractType
             ])
             ->add('roles')
             ->add('password', PasswordType::class, [
-                "mapped" => false,
                 "label" => "Votre mot de passe",
             ])
             ->add('firstname', TextType::class, [
@@ -54,7 +53,9 @@ class CandidateType extends AbstractType
                     "placeholder" => "Votre ville"
                 ]
             ])
-            ->add('presentation')
+            ->add('presentation', TextType::class, [
+                "label" => "Présentation"
+            ])
             ->add('createdAt')
             ->add('updatedAt')
             ->add('gender')

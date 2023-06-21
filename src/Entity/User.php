@@ -9,8 +9,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
-
-
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\InheritanceType("JOINED")
