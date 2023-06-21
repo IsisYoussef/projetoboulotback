@@ -5,12 +5,10 @@ namespace App\Controller\Back;
 use App\Entity\Candidate;
 use App\Form\CandidateType;
 use App\Repository\CandidateRepository;
-use Datetime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/back/candidate", name="app_back_candidate_")
@@ -33,7 +31,6 @@ class CandidateController extends AbstractController
      */
     public function new(Request $request, CandidateRepository $candidateRepository): Response
     {
-
         $candidate = new Candidate();
         $form = $this->createForm(CandidateType::class, $candidate);
         $form->handleRequest($request);
@@ -65,7 +62,7 @@ class CandidateController extends AbstractController
     /**
      * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, ?Candidate $candidate, CandidateRepository $candidateRepository): Response
+    public function edit(Request $request, Candidate $candidate, CandidateRepository $candidateRepository): Response
     {
 
         $form = $this->createForm(CandidateType::class, $candidate);

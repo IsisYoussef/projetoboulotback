@@ -43,7 +43,7 @@ class CandidateController extends AbstractController
     }
 
     /**
-     * Read Job
+     * Read Candidat
      * @Route("/{id}", name="read", requirements={"id"="\d+"}, methods={"GET"})
      */
     public function read($id, CandidateRepository $candidateRepository): JsonResponse
