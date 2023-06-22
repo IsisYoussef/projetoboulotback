@@ -37,7 +37,7 @@ class CandidateController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $candidateRepository->add($candidate, true);
-
+        
             return $this->redirectToRoute('app_back_candidate_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -64,17 +64,20 @@ class CandidateController extends AbstractController
      */
     public function edit(Request $request, Candidate $candidate, CandidateRepository $candidateRepository): Response
     {
+    if ($candidate === null) {
+        throw $this->createNotFoundException("ce candidat n'existe pas");
+    }
 
-        $form = $this->createForm(CandidateType::class, $candidate);
-        $form->handleRequest($request);
+    $form = $this->createForm(CandidateType::class, $candidate);
+    $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $candidateRepository->add($candidate, true);
+    if ($form->isSubmitted() && $form->isValid()) {
+        $candidateRepository->add($candidate, true);
 
-            return $this->redirectToRoute('app_back_candidate_index', [], Response::HTTP_SEE_OTHER);
-        }
+        return $this->redirectToRoute('app_back_candidate_index', [], Response::HTTP_SEE_OTHER);
+    }
 
-        return $this->renderForm('back/candidate/edit.html.twig', [
+    return $this->renderForm('back/candidate/edit.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
         ]);

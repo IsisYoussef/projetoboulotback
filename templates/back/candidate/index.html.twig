@@ -48,6 +48,9 @@
                 <td>{{ candidate.avatar }}</td>
                 <td>
                     
+                    <a href="{{ path('app_back_candidate_show', {'id': candidate.id}) }}">show</a>
+                    <a href="{{ path('app_back_candidate_edit', {'id': candidate.id}) }}">edit</a>
+                
                 </td>
                     
             </tr> 

@@ -19,7 +19,7 @@ class Company extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
-     * @groups({"company_read"})
+     * @groups({"company_read", "company_browse"})
      */
     private $id;
 
@@ -53,10 +53,7 @@ class Company extends User
         $this->jobs = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getSiret(): ?string
     {

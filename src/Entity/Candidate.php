@@ -18,7 +18,7 @@ class Candidate extends User
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
-     * @groups({"candidate_read"})
+     * @groups({"candidate_browse", "candidate_read"})
      */
     private $id;
 
@@ -47,10 +47,12 @@ class Candidate extends User
         $this->applies = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    /**public function getId(): ?int
     {
+        dd($this);
         return $this->id;
     }
+    */
 
     public function getBirthday(): ?\DateTimeInterface
     {

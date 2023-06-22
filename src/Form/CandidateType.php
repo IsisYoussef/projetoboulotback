@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Candidate;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -18,7 +20,13 @@ class CandidateType extends AbstractType
             ->add('email', EmailType::class, [
                 "label" => "Votre email",
             ])
-            ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                "multiple" => true,
+                "expanded" => true,
+                'choices' => [
+                    "Candidat"
+                ]
+            ])
             ->add('password', PasswordType::class, [
                 "label" => "Votre mot de passe",
             ])
@@ -54,12 +62,14 @@ class CandidateType extends AbstractType
                 ]
             ])
             ->add('presentation', TextType::class, [
-                "label" => "Présentation"
+                "label" => "présentation"
             ])
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('gender')
-            ->add('birthday')
+            ->add('createdAt', DateTimeType::class)
+            ->add('updatedAt', DateTimeType::class)
+            ->add('gender', TextType::class, [
+                "label" => "genre"
+            ])
+            ->add('birthday', DateTimeType::class)
             ->add('avatar')
         ;
     }

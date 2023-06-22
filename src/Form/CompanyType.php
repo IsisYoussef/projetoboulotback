@@ -4,6 +4,10 @@ namespace App\Form;
 
 use App\Entity\Company;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +20,15 @@ class CompanyType extends AbstractType
             ->add('email', EmailType::class, [
                 "label" => "Votre email",
             ])
-            ->add('roles')
+            ->add('roles', ChoiceType::class, [
+                "multiple" => true,
+                "expanded" => true,
+                'choices' => [
+                    "Company"
+                ]
+            ])
             ->add('password', PasswordType::class, [
+                "mapped" => false,
                 "label" => "Votre mot de passe",
             ])
             ->add('firstname', TextType::class, [
@@ -33,18 +44,37 @@ class CompanyType extends AbstractType
                 ]
             ])
             ->add('phone')
-            ->add('address')
-            ->add('postalCode')
-            ->add('city')
-            ->add('presentation', TextType::class, [
-                "label" => "Présentation"
+            ->add('address', TextType::class, [
+                "label" => "Adresse",
+                "attr" => [
+                    "placeholder" => "Votre adresse"
+                ]
             ])
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('gender')
+            ->add('postalCode', TextType::class, [
+                "label" => "Code postal",
+                "attr" => [
+                    "placeholder" => "Code postal"
+                ]
+            ])
+            ->add('city', TextType::class, [
+                "label" => "Ville",
+                "attr" => [
+                    "placeholder" => "Votre ville"
+                ]
+            ])
+            ->add('presentation', TextType::class, [
+                "label" => "présentation"
+            ])
+            ->add('createdAt', DateTimeType::class)
+            ->add('updatedAt', DateTimeType::class)
+            ->add('gender', TextType::class, [
+                "label" => "genre"
+            ])
             ->add('siret')
             ->add('logo')
-            ->add('name')
+            ->add('name', TextType::class, [
+                "label" => "nom de l'entreprise"
+            ])
         ;
     }
 

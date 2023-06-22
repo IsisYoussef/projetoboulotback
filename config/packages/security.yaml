@@ -50,7 +50,9 @@ security:
         main:
             lazy: true
             provider: chain_provider
-
+            custom_authenticator: App\Security\AuthentificatorAuthenticator
+            logout:
+                path: app_logout
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -64,6 +66,11 @@ security:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+
+        # back-office
+        - { path: ^/backoffice$, roles: ROLE_USER }
+        - { path: ^/back\/\w+\$, roles: ROLE_USER }
         
         # /api/candidats/{id}
         - {path: ^\/api\/\candidats\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
