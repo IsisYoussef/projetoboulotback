@@ -67,6 +67,7 @@ class CompanyController extends AbstractController
      */
     public function edit(Request $request, ?Company $company, CompanyRepository $companyRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_MANAGER");
         $form = $this->createForm(CompanyType::class, $company);
         $form->handleRequest($request);
 
@@ -87,6 +88,8 @@ class CompanyController extends AbstractController
      */
     public function delete(Request $request, ?Company $company, CompanyRepository $companyRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_MANAGER");
+
         if ($this->isCsrfTokenValid('delete'.$company->getId(), $request->request->get('_token'))) {
             $companyRepository->remove($company, true);
         }

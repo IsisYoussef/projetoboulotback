@@ -85,6 +85,8 @@ class JobController extends AbstractController
      */
     public function delete(Request $request, Job $job, JobRepository $jobRepository): Response
     {
+        $this->denyAccessUnlessGranted("ROLE_MANAGER");
+
         if ($this->isCsrfTokenValid('delete'.$job->getId(), $request->request->get('_token'))) {
             $jobRepository->remove($job, true);
         }

@@ -37,3 +37,8 @@
  - Finish the redirect "TODO" in the App\Security\AuthentificatorAuthenticator::onAuthenticationSuccess() method.
  - Review & adapt the login template: templates/security/login.html.twig.
 student@isis-youssef-oclock-student:/var/www/html/apotheose/projet-o-boulot-back$ 
+
+#Création des Fakers
+- https://fakerphp.github.io/
+- https://fakerphp.github.io/locales/fr_FR/
+- https://github.com/FakerPHP/Faker/blob/main/src/Faker/Provider/fr_FR/Person.php

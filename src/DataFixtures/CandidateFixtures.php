@@ -38,7 +38,7 @@ class CandidateFixtures extends Fixture
         $fakerFr = \Faker\Factory::create('fr_FR');
 
 
-        //* 50 candidats masculins
+        //* 50 candidats masculins avec Fakers
         /** @var Candidate[] */
         $allCandidates = [];
         for ($i=0; $i < 50; $i++) {
