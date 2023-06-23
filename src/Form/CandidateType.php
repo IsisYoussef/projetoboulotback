@@ -18,28 +18,31 @@ class CandidateType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                "label" => "Votre email",
-            ])
-            ->add('roles', ChoiceType::class, [
-                "multiple" => true,
-                "expanded" => true,
-                'choices' => [
-                    "Candidat"
-                ]
+                "label" => "Email",
             ])
             ->add('password', PasswordType::class, [
-                "label" => "Votre mot de passe",
+                "label" => "Mot de passe",
+            ])
+            ->add('gender', ChoiceType::class, [
+                "label" => "Civilité",
+                "multiple" => false,
+                "expanded" => true,
+                "choices" => [
+                    "Madame" => "Madame",
+                    "Monsieur" => "Monsieur",
+                    "Autre" => "Autre"
+                ]
             ])
             ->add('firstname', TextType::class, [
                 "label" => "Prénom",
                 "attr" => [
-                    "placeholder" => "Votre prénom"
+                    "placeholder" => "Prénom du candidat"
                 ]
             ])
             ->add('lastname', TextType::class, [
                 "label" => "Nom",
                 "attr" => [
-                    "placeholder" => "Votre nom"
+                    "placeholder" => "Nom du candidat"
                 ]
             ])
             ->add('phone')
@@ -63,11 +66,6 @@ class CandidateType extends AbstractType
             ])
             ->add('presentation', TextType::class, [
                 "label" => "présentation"
-            ])
-            ->add('createdAt', DateTimeType::class)
-            ->add('updatedAt', DateTimeType::class)
-            ->add('gender', TextType::class, [
-                "label" => "genre"
             ])
             ->add('birthday', DateTimeType::class)
             ->add('avatar')

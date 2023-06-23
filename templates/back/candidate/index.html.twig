@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Candidate index{% endblock %}
+{% block title %}Liste des candidats{% endblock %}
 
 {% block body %}
-    <h1>Candidate index</h1>
-
+    <h1>Liste des candidats</h1>
+    <a href="{{ path('app_back_candidate_new') }}">Créer un candidat</a>
     <table class="table">
         <thead>
             <tr>
@@ -12,17 +12,17 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Password</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>PostalCode</th>
-                <th>City</th>
-                <th>Presentation</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>Gender</th>
-                <th>Birthday</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Présentation</th>
+                <th>Date de création</th>
+                <th>MAJ</th>
+                <th>Genre</th>
+                <th>Date de naissance</th>
                 <th>Avatar</th>
                 <th>actions</th>
             </tr>
@@ -62,5 +62,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_candidate_new') }}">Create new</a>
+    
 {% endblock %}

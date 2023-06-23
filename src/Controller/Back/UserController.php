@@ -39,10 +39,10 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user, true);
 
-            return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/user/new.html.twig', [
+        return $this->renderForm('back/team/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -77,8 +77,8 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-
-    /**
+    
+     /**
      * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
@@ -89,6 +89,7 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
     }
+    
 
 
 }

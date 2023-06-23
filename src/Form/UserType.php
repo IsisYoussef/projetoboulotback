@@ -29,6 +29,15 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('password', PasswordType::class)
+            ->add('gender', ChoiceType::class, [
+                "multiple" => false,
+                "expanded" => true,
+                "choices" => [
+                    "Madame" => "Madame",
+                    "Monsieur" => "Monsieur",
+                    "Autre" => "Autre"
+                ]
+            ])
             ->add('firstname', TextType::class, [
                 "label" => "Prénom",
                 "attr" => [
@@ -48,9 +57,7 @@ class UserType extends AbstractType
             ->add('presentation', TextType::class, [
                 "label" => "Présentation"
             ])
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('gender')
+            
         ;
     }
 

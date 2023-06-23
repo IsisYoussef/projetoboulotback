@@ -22,22 +22,12 @@ class JobType extends AbstractType
             ->add('nbVacancy')
             ->add('place')
             ->add('description')
-            ->add('isValid')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('publishedAt')
-            //->add('company', EntityType::class, [
-            //   "multiple" => false,
-            //    "expanded" => true,
-            //    "class" => Company::class,
-            //    'choice_label' => 'company',
-            //])
-            //->add('category', EntityType::class, [
-            //    "multiple" => false,
-            //    "expanded" => true,
-            //    "class" => Category::class,
-            //    'choice_label' => 'category',
-            //])
+            ->add('category', EntityType::class, [
+                "multiple" => false,
+                "expanded" => false,
+                "class" => Category::class,
+                'choice_label' => 'title',
+            ])
         ;
     }
 

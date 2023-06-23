@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Team{% endblock %}
+{% block title %}Liste de la Team{% endblock %}
 
 {% block body %}
-    <h1>Team</h1>
-
+    <h1>Liste de la Team</h1>
+        <a href="{{ path('app_back_team_new') }}">Créer un membre</a>
     <table class="table">
         <thead>
             <tr>
@@ -12,16 +12,16 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Password</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>PostalCode</th>
-                <th>City</th>
-                <th>Presentation</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>Gender</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Présentation</th>
+                <th>Date de création</th>
+                <th>MAJ</th>
+                <th>Genre</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -44,18 +44,16 @@
                 <td>{{ user.gender }}</td>
                 <td>
                     
-                    <a href="{{ path('app_back_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_back_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_back_team_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_back_team_edit', {'id': user.id}) }}">Modifier</a>
                 
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="15">no records found</td>
+                <td colspan="15">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_back_user_new') }}">Create new</a>
 {% endblock %}

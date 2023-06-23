@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company index{% endblock %}
+{% block title %}Liste des entrerpises{% endblock %}
 
 {% block body %}
-    <h1>Company index</h1>
-
+    <h1>Liste des entreprises</h1>
+    <a href="{{ path('app_back_company_new') }}">Créer une entreprise</a>
     <table class="table">
         <thead>
             <tr>
@@ -12,19 +12,19 @@
                 <th>Email</th>
                 <th>Roles</th>
                 <th>Password</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>PostalCode</th>
-                <th>City</th>
-                <th>Presentation</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>Gender</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Code postal</th>
+                <th>Ville</th>
+                <th>Présentation</th>
+                <th>Date de création</th>
+                <th>MAJ</th>
+                <th>Genre</th>
                 <th>Siret</th>
                 <th>Logo</th>
-                <th>Name</th>
+                <th>Nom de l'entreprise</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -49,18 +49,18 @@
                 <td>{{ company.logo }}</td>
                 <td>{{ company.name }}</td>
                 <td>
-                    <a href="{{ path('app_back_company_show', {'id': company.id}) }}">show</a>
-                    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}">edit</a>
+                    <a href="{{ path('app_back_company_show', {'id': company.id}) }}">Voir</a>
+                    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}">Modifier</a>
                 </td>
             
             </tr>
         {% else %}
             <tr>
-                <td colspan="18">no records found</td>
+                <td colspan="18">Aucun enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_company_new') }}">Create new</a>
+    
 {% endblock %}

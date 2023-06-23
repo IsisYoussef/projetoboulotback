@@ -71,8 +71,8 @@ security:
         # back-office
         - { path: ^/backoffice$, roles: ROLE_USER }
         - { path: ^/back\/\w+\$, roles: ROLE_USER }
-        #- { path: ^/back\/team\$, roles: ROLE_ADMIN }
-        #- { path: ^/back\/team\/w+\$, roles: ROLE_ADMIN }
+        - { path: ^/back\/team\$, roles: ROLE_ADMIN }
+        - { path: ^/back\/team\/w+\$, roles: ROLE_ADMIN }
 
         
         # /api/candidats/{id}

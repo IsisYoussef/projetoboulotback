@@ -20,16 +20,18 @@ class CompanyType extends AbstractType
             ->add('email', EmailType::class, [
                 "label" => "Votre email",
             ])
-            ->add('roles', ChoiceType::class, [
-                "multiple" => true,
-                "expanded" => true,
-                'choices' => [
-                    "Company"
-                ]
-            ])
             ->add('password', PasswordType::class, [
                 "mapped" => false,
                 "label" => "Votre mot de passe",
+            ])
+            ->add('gender', ChoiceType::class, [
+                "multiple" => false,
+                "expanded" => true,
+                "choices" => [
+                    "Madame" => "Madame",
+                    "Monsieur" => "Monsieur",
+                    "Autre" => "Autre"
+                ]
             ])
             ->add('firstname', TextType::class, [
                 "label" => "Prénom",
@@ -64,11 +66,6 @@ class CompanyType extends AbstractType
             ])
             ->add('presentation', TextType::class, [
                 "label" => "présentation"
-            ])
-            ->add('createdAt', DateTimeType::class)
-            ->add('updatedAt', DateTimeType::class)
-            ->add('gender', TextType::class, [
-                "label" => "genre"
             ])
             ->add('siret')
             ->add('logo')
