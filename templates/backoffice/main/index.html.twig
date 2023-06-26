@@ -3,31 +3,57 @@
 {% block title %}Bienvenue dans le Backoffice O'Boulot{% endblock %}
 
 {% block body %}
-    <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Offres</h5>
-    <a href="{{ path('app_back_job_index') }}" class="btn btn-primary">Voir</a>
-  </div>
+
+<div class="container">
+<div class="my-4"> 
+      <h4>BackOffice O'Boulot</h4>
+    </div>
 </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Candidats</h5>
-    <a href="{{ path('app_back_candidate_index') }}" class="btn btn-primary">Voir</a>
-  </div>
-</div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+          <h5 class="card-title">Offres</h5>
+          </div>
+          <div class="card-body">
+            <a href="{{ path('app_back_job_index') }}" class="btn btn-primary">Voir</a>
+          </div>
+        </div>
+      </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Entreprises</h5>
-    <a href="{{ path('app_back_company_index') }}" class="btn btn-primary">Voir</a>
-  </div>
-</div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+          <h5 class="card-title">Candidats</h5>
+          </div>
+          <div class="card-body">
+            <a href="{{ path('app_back_candidate_index') }}" class="btn btn-primary">Voir</a>
+          </div>
+        </div>
+      </div>
 
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Equipe</h5>
-    <a href="{{ path('app_back_team_index') }}" class="btn btn-primary">Voir</a>
-  </div>
-</div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+          <h5 class="card-title">Entreprises</h5>
+          </div>
+          <div class="card-body">
+            <a href="{{ path('app_back_company_index') }}" class="btn btn-primary">Voir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+          <h5 class="card-title">Equipe</h5>
+          </div>
+          <div class="card-body">
+            <a href="{{ path('app_back_team_index') }}" class="btn btn-primary">Voir</a>
+          </div>
+        </div>
+      </div>
+
 {% endblock %}
