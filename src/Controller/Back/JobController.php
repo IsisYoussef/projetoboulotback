@@ -10,7 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Mime\Email;
 
 /**
  * @Route("/backoffice/job", name="app_back_job_")
@@ -30,7 +32,7 @@ class JobController extends AbstractController
     /**
      * @Route("/new", name="new", methods={"GET", "POST"})
      */
-    public function new(Request $request, JobRepository $jobRepository): Response
+    public function new(Request $request, JobRepository $jobRepository, MailerInterface $mailerInterface): Response
     {
         $job = new Job();
         $form = $this->createForm(JobType::class, $job);
@@ -38,6 +40,18 @@ class JobController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $jobRepository->add($job, true);
+
+        //---- Mail Mailgun -----
+        $newMail = new Email();
+        $newMail->from("admin@oboulot.io")
+        ->to("isisyoussef24@gmail.com")
+        ->subject("Une nouvelle offre est publiée")
+        ->text("Découvrir cette super offre")
+        ->html("<h1>Une nouvelle offre</h1>");
+
+        $mailerInterface->send($newMail);
+
+        // ----      ----
 
             return $this->redirectToRoute('app_back_job_index', [], Response::HTTP_SEE_OTHER);
         }

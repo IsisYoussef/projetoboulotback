@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Company;
 use App\Entity\Job;
+use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -62,7 +63,21 @@ class JobType extends AbstractType
                 "class" => Category::class,
                 'choice_label' => 'title',
             ])
-        ;
+            ->add('isValid', ChoiceType::class, [
+                "label" => "validité",
+                "multiple" => false,
+                "expanded" => true,
+                "choices" => [
+                    "vrai" => "vrai",
+                    "faux" => "faux",
+            ]])
+            ->add('createdAt', DateTimeType::class, [
+                'label' => "Crée le"
+            ])
+            ->add('publishedAt', DateTimeType::class, [
+                'label' => "Mise à jour"
+            ])
+         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
