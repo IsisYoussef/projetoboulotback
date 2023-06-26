@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau boulot{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouveau boulot</h1>
+
+    {{ include('backoffice/job/_form.html.twig') }}
+
+    <a href="{{ path('app_back_job_index') }}">Retour à la liste des offres</a>
+{% endblock %}

@@ -6,27 +6,28 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * @Route("/backoffice/user", name="app_back_user_")
+ * @Route("/backoffice/team", name="app_back_team_")
  */
-class UserController extends AbstractController
+class TeamController extends AbstractController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('backoffice/user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+        $users = $userRepository->findByRole(['ROLE_MANAGER', 'ROLE_USER', 'ROLE_ADMIN']);
+     
+        return $this->render('backoffice/team/index.html.twig', [
+            "users" => $users
+            
         ]);
     }
-    
+
     /**
      * @Route("/new", name="new", methods={"GET", "POST"})
      */
@@ -53,7 +54,7 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        return $this->render('backoffice/user/show.html.twig', [
+        return $this->render('backoffice/team/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -69,16 +70,16 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->add($user, true);
 
-            return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('backoffice/user/edit.html.twig', [
+        return $this->renderForm('backoffice/team/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
     }
-    
-     /**
+
+    /**
      * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
@@ -87,9 +88,7 @@ class UserController extends AbstractController
             $userRepository->remove($user, true);
         }
 
-        return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
     }
-    
-
 
 }

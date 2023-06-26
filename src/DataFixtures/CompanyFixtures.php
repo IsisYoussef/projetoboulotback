@@ -20,7 +20,7 @@ class CompanyFixtures extends Fixture
         $company->setPassword('$2y$13$7GrYE5KTBth3p/9s8OijaeoIqF5Jd8uxIWHXY8ZCSjYypw0nH3kOa');
         $company->setName("O'boulot");
         $company->setSiret("80365956985425");
-        $company->setFirstname("GÃ©rad");
+        $company->setFirstname("Gérard");
         $company->setLastname("Duroy");
         $company->setPhone("0145859696");
         $company->setAddress("rue de la riviere");
@@ -36,7 +36,7 @@ class CompanyFixtures extends Fixture
         $fakerFr = \Faker\Factory::create('fr_FR');
         $faker->addProvider(new \Faker\Provider\fr_FR\Company($faker));
 
-        //50 entreprises
+        //Faker - création de 50 entreprises
         /** @var Company[] */
         $allCompanies = [];
         for ($i=0; $i < 50; $i++) {
@@ -46,7 +46,7 @@ class CompanyFixtures extends Fixture
 
             //2. remplir les propriétés
             $newCompany->setEmail($faker->freeEmail());
-            $newCompany->setPassword("company");
+            $newCompany->setPassword('$2y$13$f8avc.gAY9i2RjN36xgxkuE2pxauzsej0.cXpYjL56OFLCYF/bNsK');
             $newCompany->setName($faker->company());
             $newCompany->setSiret($faker->siret());
             $newCompany->setFirstname($fakerFr->firstName());

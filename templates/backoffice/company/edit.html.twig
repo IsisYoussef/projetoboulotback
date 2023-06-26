@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une entreprise{% endblock %}
+
+{% block body %}
+    <h1>Modifier une entreprise</h1>
+
+    {{ include('backoffice/company/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_back_company_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    {{ include('backoffice/company/_delete_form.html.twig') }}
+{% endblock %}

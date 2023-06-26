@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de la Team{% endblock %}
+
+{% block body %}
+    <h1>Liste de la Team</h1>
+        <a href="{{ path('app_back_team_new') }}">Créer un membre</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Mot de passe</th>
+                <th>Civilité</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Téléphone</th>
+                <th>Adresse</th>
+                <th>Code Postal</th>
+                <th>Ville</th>
+                <th>Présentation</th>
+                <th>Date de création</th>
+                <th>Date de mise à jour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.password }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.postalCode }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.presentation }}</td>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.gender }}</td>
+                <td>
+                    
+                    <a href="{{ path('app_back_team_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('app_back_team_edit', {'id': user.id}) }}">Modifier</a>
+                
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

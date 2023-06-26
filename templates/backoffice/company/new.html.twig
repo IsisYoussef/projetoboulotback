@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une entreprise{% endblock %}
+
+{% block body %}
+    <h1>Créer une entreprise</h1>
+
+    {{ include('backoffice/company/_form.html.twig') }}
+
+    <a href="{{ path('app_back_company_index') }}" class="btn btn-primary">Retour sur la liste</a>
+{% endblock %}

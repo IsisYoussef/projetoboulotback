@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Company{% endblock %}
+{% block title %}Entreprise{% endblock %}
 
 {% block body %}
-    <h1>Company</h1>
+    <h1>Entreprise</h1>
 
     <table class="table">
         <tbody>
@@ -20,67 +20,67 @@
                 <td>{{ company.roles ? company.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>Mot de passe</th>
                 <td>{{ company.password }}</td>
             </tr>
             <tr>
-                <th>Firstname</th>
-                <td>{{ company.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
-                <td>{{ company.lastname }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ company.phone }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ company.address }}</td>
-            </tr>
-            <tr>
-                <th>PostalCode</th>
-                <td>{{ company.postalCode }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ company.city }}</td>
-            </tr>
-            <tr>
-                <th>Presentation</th>
-                <td>{{ company.presentation }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Gender</th>
-                <td>{{ company.gender }}</td>
+                <th>Nom de l'entreprise</th>
+                <td>{{ company.name }}</td>
             </tr>
             <tr>
                 <th>Siret</th>
                 <td>{{ company.siret }}</td>
             </tr>
             <tr>
-                <th>Logo</th>
-                <td>{{ company.logo }}</td>
+                <th>Civilité</th>
+                <td>{{ company.gender }}</td>
             </tr>
             <tr>
-                <th>Name</th>
-                <td>{{ company.name }}</td>
+                <th>Prénom</th>
+                <td>{{ company.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ company.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Téléphone</th>
+                <td>{{ company.phone }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ company.address }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ company.postalCode }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ company.city }}</td>
+            </tr>
+            <tr>
+                <th>Présentation</th>
+                <td>{{ company.presentation }}</td>
+            </tr>
+            <tr>
+                <th>date de création</th>
+                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date de mis à jour</th>
+                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Logo</th>
+                <td>{{ company.logo }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_company_index') }}">back to list</a>
+    <a href="{{ path('app_back_company_index') }}" class="btn btn-primary">revenir à la liste</a>
 
-    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}">edit</a>
+    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}" class="btn btn-primary">Modifier</a>
 
-    {{ include('back/company/_delete_form.html.twig') }}
+    {{ include('backoffice/company/_delete_form.html.twig') }}
 {% endblock %}

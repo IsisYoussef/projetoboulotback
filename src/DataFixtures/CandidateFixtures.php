@@ -38,7 +38,7 @@ class CandidateFixtures extends Fixture
         $fakerFr = \Faker\Factory::create('fr_FR');
 
 
-        //* 50 candidats masculins
+        //* 50 candidats masculins avec Fakers
         /** @var Candidate[] */
         $allCandidates = [];
         for ($i=0; $i < 50; $i++) {
@@ -47,7 +47,7 @@ class CandidateFixtures extends Fixture
             //2. remplir les propriétés
 
             $newCandidate->setEmail($faker->freeEmail());
-            $newCandidate->setPassword("candidat");
+            $newCandidate->setPassword('$2y$13$qBYauAOZkk1bvbzzi0lsPOq8uVciKoKhpSIWg3i8l98iD2aPKVL3y');
             $newCandidate->setGender("Monsieur");
             $newCandidate ->setFirstname($fakerFr->firstNameMale());
             $newCandidate ->setLastname($fakerFr->lastName());
@@ -74,7 +74,7 @@ class CandidateFixtures extends Fixture
             //2. remplir les propriétés
 
             $newCandidateF ->setEmail($faker->freeEmail());
-            $newCandidateF ->setPassword("candidate");
+            $newCandidateF ->setPassword('$2y$13$qBYauAOZkk1bvbzzi0lsPOq8uVciKoKhpSIWg3i8l98iD2aPKVL3y');
             $newCandidateF ->setGender("Madame");
             $newCandidateF ->setFirstname($fakerFr->firstNameFemale());
             $newCandidateF ->setLastname($fakerFr->lastName());

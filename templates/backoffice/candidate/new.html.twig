@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau candidat
+{% endblock %}
+
+{% block body %}
+	<h1>Créer un nouveau candidat</h1>
+
+	{{ include('backoffice/candidate/_form.html.twig') }}
+
+	<a href="{{ path('app_back_candidate_index') }}">Retour à la liste</a>
+{% endblock %}

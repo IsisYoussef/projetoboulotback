@@ -18,58 +18,64 @@ class CandidateType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                "label" => "Votre email",
-            ])
-            ->add('roles', ChoiceType::class, [
-                "multiple" => true,
-                "expanded" => true,
-                'choices' => [
-                    "Candidat"
-                ]
+                "label" => "Email",
             ])
             ->add('password', PasswordType::class, [
-                "label" => "Votre mot de passe",
+                "label" => "Mot de passe",
+            ])
+            ->add('gender', ChoiceType::class, [
+                "label" => "Civilité",
+                "multiple" => false,
+                "expanded" => true,
+                "choices" => [
+                    "Madame" => "Madame",
+                    "Monsieur" => "Monsieur",
+                    "Autre" => "Autre"
+                ]
             ])
             ->add('firstname', TextType::class, [
                 "label" => "Prénom",
                 "attr" => [
-                    "placeholder" => "Votre prénom"
+                    "placeholder" => "Prénom du candidat"
                 ]
             ])
             ->add('lastname', TextType::class, [
                 "label" => "Nom",
                 "attr" => [
-                    "placeholder" => "Votre nom"
+                    "placeholder" => "Nom du candidat"
                 ]
             ])
-            ->add('phone')
+            ->add('phone', TextType::class, [
+                "label" => "Numéro de téléphone",
+                "attr" => [
+                    "placeholder" => "Numéro de téléphone du candidat"
+                ]
+            ])
+
             ->add('address', TextType::class, [
                 "label" => "Adresse",
                 "attr" => [
-                    "placeholder" => "Votre adresse"
+                    "placeholder" => "Adresse du candidat"
                 ]
             ])
             ->add('postalCode', TextType::class, [
                 "label" => "Code postal",
                 "attr" => [
-                    "placeholder" => "Code postal"
+                    "placeholder" => "Code postal du candidat"
                 ]
             ])
             ->add('city', TextType::class, [
                 "label" => "Ville",
                 "attr" => [
-                    "placeholder" => "Votre ville"
+                    "placeholder" => "Ville du candidat"
                 ]
             ])
             ->add('presentation', TextType::class, [
-                "label" => "présentation"
+                "label" => "Présentation du candidat"
             ])
-            ->add('createdAt', DateTimeType::class)
-            ->add('updatedAt', DateTimeType::class)
-            ->add('gender', TextType::class, [
-                "label" => "genre"
+            ->add('birthday', DateTimeType::class, [
+                "label" => "Date de naissance du candidat"
             ])
-            ->add('birthday', DateTimeType::class)
             ->add('avatar')
         ;
     }
