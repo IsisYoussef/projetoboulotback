@@ -45,29 +45,37 @@ class CandidateType extends AbstractType
                     "placeholder" => "Nom du candidat"
                 ]
             ])
-            ->add('phone')
+            ->add('phone', TextType::class, [
+                "label" => "Numéro de téléphone",
+                "attr" => [
+                    "placeholder" => "Numéro de téléphone du candidat"
+                ]
+            ])
+
             ->add('address', TextType::class, [
                 "label" => "Adresse",
                 "attr" => [
-                    "placeholder" => "Votre adresse"
+                    "placeholder" => "Adresse du candidat"
                 ]
             ])
             ->add('postalCode', TextType::class, [
                 "label" => "Code postal",
                 "attr" => [
-                    "placeholder" => "Code postal"
+                    "placeholder" => "Code postal du candidat"
                 ]
             ])
             ->add('city', TextType::class, [
                 "label" => "Ville",
                 "attr" => [
-                    "placeholder" => "Votre ville"
+                    "placeholder" => "Ville du candidat"
                 ]
             ])
             ->add('presentation', TextType::class, [
-                "label" => "présentation"
+                "label" => "Présentation du candidat"
             ])
-            ->add('birthday', DateTimeType::class)
+            ->add('birthday', DateTimeType::class, [
+                "label" => "Date de naissance du candidat"
+            ])
             ->add('avatar')
         ;
     }

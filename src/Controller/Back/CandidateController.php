@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/back/candidate", name="app_back_candidate_")
+ * @Route("/backoffice/candidate", name="app_back_candidate_")
  */
 class CandidateController extends AbstractController
 {
@@ -21,7 +21,7 @@ class CandidateController extends AbstractController
      */
     public function index(CandidateRepository $candidateRepository): Response
     {
-        return $this->render('back/candidate/index.html.twig', [
+        return $this->render('backoffice/candidate/index.html.twig', [
             'candidates' => $candidateRepository->findAll(),
         ]);
     }
@@ -41,7 +41,7 @@ class CandidateController extends AbstractController
             return $this->redirectToRoute('app_back_candidate_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/candidate/new.html.twig', [
+        return $this->renderForm('backoffice/candidate/new.html.twig', [
             'candidate' => $candidate,
             'form' => $form,
         ]);
@@ -56,7 +56,7 @@ class CandidateController extends AbstractController
             throw $this->createNotFoundException("ce candidat n'existe pas");
         }
 
-        return $this->render('back/candidate/show.html.twig', [
+        return $this->render('backoffice/candidate/show.html.twig', [
             'candidate' => $candidate,
         ]);
     }
@@ -81,7 +81,7 @@ class CandidateController extends AbstractController
             return $this->redirectToRoute('app_back_candidate_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/candidate/edit.html.twig', [
+        return $this->renderForm('backoffice/candidate/edit.html.twig', [
                 'candidate' => $candidate,
                 'form' => $form,
             ]);

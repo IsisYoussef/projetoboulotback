@@ -18,13 +18,14 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                "label" => "Votre email",
+                "label" => "Email du contact",
             ])
             ->add('password', PasswordType::class, [
                 "mapped" => false,
-                "label" => "Votre mot de passe",
+                "label" => "Mot de passe du contact",
             ])
             ->add('gender', ChoiceType::class, [
+                "label" => "Civilité du contact",
                 "multiple" => false,
                 "expanded" => true,
                 "choices" => [
@@ -36,41 +37,41 @@ class CompanyType extends AbstractType
             ->add('firstname', TextType::class, [
                 "label" => "Prénom",
                 "attr" => [
-                    "placeholder" => "Votre prénom"
+                    "placeholder" => "Prénom du contact"
                 ]
             ])
             ->add('lastname', TextType::class, [
                 "label" => "Nom",
                 "attr" => [
-                    "placeholder" => "Votre nom"
+                    "placeholder" => "Nom du contact"
                 ]
             ])
             ->add('phone')
             ->add('address', TextType::class, [
                 "label" => "Adresse",
                 "attr" => [
-                    "placeholder" => "Votre adresse"
+                    "placeholder" => "Adresse de l'entreprise"
                 ]
             ])
             ->add('postalCode', TextType::class, [
                 "label" => "Code postal",
                 "attr" => [
-                    "placeholder" => "Code postal"
+                    "placeholder" => "Code postal de l'entreprise"
                 ]
             ])
             ->add('city', TextType::class, [
                 "label" => "Ville",
                 "attr" => [
-                    "placeholder" => "Votre ville"
+                    "placeholder" => "Ville de l'entreprise"
                 ]
             ])
             ->add('presentation', TextType::class, [
-                "label" => "présentation"
+                "label" => "Présentation de l'entreprise"
             ])
             ->add('siret')
             ->add('logo')
             ->add('name', TextType::class, [
-                "label" => "nom de l'entreprise"
+                "label" => "Nom de l'entreprise"
             ])
         ;
     }

@@ -12,27 +12,27 @@
                 <td>{{ job.id }}</td>
             </tr>
             <tr>
-                <th>Entitled</th>
+                <th>intitulé</th>
                 <td>{{ job.entitled }}</td>
             </tr>
             <tr>
-                <th>DateFrom</th>
+                <th>Date de début de la mission</th>
                 <td>{{ job.dateFrom ? job.dateFrom|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateTill</th>
+                <th>Date de fin de la mission</th>
                 <td>{{ job.dateTill ? job.dateTill|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>Duration</th>
+                <th>Durée (en h)</th>
                 <td>{{ job.duration }}</td>
             </tr>
             <tr>
-                <th>NbVacancy</th>
+                <th>Nombre de postes vacants</th>
                 <td>{{ job.nbVacancy }}</td>
             </tr>
             <tr>
-                <th>Place</th>
+                <th>Localisation</th>
                 <td>{{ job.place }}</td>
             </tr>
             <tr>
@@ -40,27 +40,27 @@
                 <td>{{ job.description }}</td>
             </tr>
             <tr>
-                <th>IsValid</th>
+                <th>Offre validée ?</th>
                 <td>{{ job.isValid ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Date de création</th>
                 <td>{{ job.createdAt ? job.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>UpdatedAt</th>
+                <th>Date de mise à jour</th>
                 <td>{{ job.updatedAt ? job.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>PublishedAt</th>
+                <th>Date de publication</th>
                 <td>{{ job.publishedAt ? job.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_job_index') }}">back to list</a>
+    <a href="{{ path('app_back_job_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_back_job_edit', {'id': job.id}) }}">edit</a>
+    <a href="{{ path('app_back_job_edit', {'id': job.id}) }}">Modifier l'offre</a>
 
-    {{ include('back/job/_delete_form.html.twig') }}
+    {{ include('backoffice/job/_delete_form.html.twig') }}
 {% endblock %}

@@ -10,23 +10,26 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * @Route("/backoffice/team", name="app_back_team_")
+ */
 class TeamController extends AbstractController
 {
     /**
-     * @Route("/back/team", name="app_back_team_index")
+     * @Route("/", name="index", methods={"GET"})
      */
     public function index(UserRepository $userRepository): Response
     {
         $users = $userRepository->findByRole(['ROLE_MANAGER', 'ROLE_USER', 'ROLE_ADMIN']);
      
-        return $this->render('back/team/index.html.twig', [
+        return $this->render('backoffice/team/index.html.twig', [
             "users" => $users
             
         ]);
     }
 
     /**
-     * @Route("back/team/new", name="app_back_team_new", methods={"GET", "POST"})
+     * @Route("/new", name="new", methods={"GET", "POST"})
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -40,24 +43,24 @@ class TeamController extends AbstractController
             return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/team/new.html.twig', [
-            'team' => $user,
+        return $this->renderForm('backoffice/team/new.html.twig', [
+            'user' => $user,
             'form' => $form,
         ]);
     }
 
     /**
-     * @Route("back/team/{id}", name="app_back_team_show", methods={"GET"})
+     * @Route("/{id}", name="show", methods={"GET"})
      */
     public function show(User $user): Response
     {
-        return $this->render('back/team/show.html.twig', [
-            'team' => $user,
+        return $this->render('backoffice/team/show.html.twig', [
+            'user' => $user,
         ]);
     }
 
     /**
-     * @Route("back/team/{id}/edit", name="app_back_team_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, User $user, UserRepository $userRepository): Response
     {
@@ -70,14 +73,14 @@ class TeamController extends AbstractController
             return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/team/edit.html.twig', [
-            'team' => $user,
+        return $this->renderForm('backoffice/team/edit.html.twig', [
+            'user' => $user,
             'form' => $form,
         ]);
     }
 
     /**
-     * @Route("back/team/{id}/delete", name="app_back_team_delete", methods={"POST"})
+     * @Route("/{id}", name="delete", methods={"POST"})
      */
     public function delete(Request $request, User $user, UserRepository $userRepository): Response
     {

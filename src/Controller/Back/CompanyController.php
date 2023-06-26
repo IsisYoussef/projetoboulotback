@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/back/company", name="app_back_company_")
+ * @Route("/backoffice/company", name="app_back_company_")
  */
 class CompanyController extends AbstractController
 {
@@ -24,7 +24,7 @@ class CompanyController extends AbstractController
      */
     public function index(CompanyRepository $companyRepository): Response
     {
-        return $this->render('back/company/index.html.twig', [
+        return $this->render('backoffice/company/index.html.twig', [
             'companies' => $companyRepository->findAll(),
         ]);
     }
@@ -44,7 +44,7 @@ class CompanyController extends AbstractController
             return $this->redirectToRoute('app_back_company_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/company/new.html.twig', [
+        return $this->renderForm('backoffice/company/new.html.twig', [
             'company' => $company,
             'form' => $form,
         ]);
@@ -57,7 +57,7 @@ class CompanyController extends AbstractController
     {
         if ($company === null){throw $this->createNotFoundException("cette entreprise n'existe pas");}
 
-        return $this->render('back/company/show.html.twig', [
+        return $this->render('backoffice/company/show.html.twig', [
             'company' => $company,
         ]);
     }
@@ -77,7 +77,7 @@ class CompanyController extends AbstractController
             return $this->redirectToRoute('app_back_company_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/company/edit.html.twig', [
+        return $this->renderForm('backoffice/company/edit.html.twig', [
             'company' => $company,
             'form' => $form,
         ]);

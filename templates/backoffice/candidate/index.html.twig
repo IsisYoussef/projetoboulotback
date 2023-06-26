@@ -48,15 +48,15 @@
                 <td>{{ candidate.avatar }}</td>
                 <td>
                     
-                    <a href="{{ path('app_back_candidate_show', {'id': candidate.id}) }}">show</a>
-                    <a href="{{ path('app_back_candidate_edit', {'id': candidate.id}) }}">edit</a>
+                    <a href="{{ path('app_back_candidate_show', {'id': candidate.id}) }}">En savoir plus</a>
+                    <a href="{{ path('app_back_candidate_edit', {'id': candidate.id}) }}">Modifier</a>
                 
                 </td>
                     
             </tr> 
         {% else %}
             <tr>
-                <td colspan="17">no records found</td>
+                <td colspan="17">Pas d'information enregistrée</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -16,7 +16,7 @@ class MainController extends AbstractController
     public function index(Request $request, UserInterface $userInterface): Response
     {
         
-        return $this->render('back/main/index.html.twig', [
+        return $this->render('backoffice/main/index.html.twig', [
 
         ]);
     }

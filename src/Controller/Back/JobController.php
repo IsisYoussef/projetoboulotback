@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/back/job", name="app_back_job_")
+ * @Route("/backoffice/job", name="app_back_job_")
  */
 class JobController extends AbstractController
 {
@@ -22,7 +22,7 @@ class JobController extends AbstractController
      */
     public function index(JobRepository $jobRepository): Response
     {
-        return $this->render('back/job/index.html.twig', [
+        return $this->render('backoffice/job/index.html.twig', [
             'jobs' => $jobRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class JobController extends AbstractController
             return $this->redirectToRoute('app_back_job_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/job/new.html.twig', [
+        return $this->renderForm('backoffice/job/new.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);
@@ -55,7 +55,7 @@ class JobController extends AbstractController
     {
         if ($job === null){throw $this->createNotFoundException("cette offre n'existe pas");}
 
-        return $this->render('back/job/show.html.twig', [
+        return $this->render('backoffice/job/show.html.twig', [
             'job' => $job,
         ]);
     }
@@ -74,7 +74,7 @@ class JobController extends AbstractController
             return $this->redirectToRoute('app_back_job_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/job/edit.html.twig', [
+        return $this->renderForm('backoffice/job/edit.html.twig', [
             'job' => $job,
             'form' => $form,
         ]);

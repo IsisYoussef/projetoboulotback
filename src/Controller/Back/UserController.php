@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Route("/back/user", name="app_back_user_")
+ * @Route("/backoffice/user", name="app_back_user_")
  */
 class UserController extends AbstractController
 {
@@ -22,7 +22,7 @@ class UserController extends AbstractController
      */
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('back/user/index.html.twig', [
+        return $this->render('backoffice/user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_back_team_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/team/new.html.twig', [
+        return $this->renderForm('backoffice/team/new.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
@@ -53,7 +53,7 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        return $this->render('back/user/show.html.twig', [
+        return $this->render('backoffice/user/show.html.twig', [
             'user' => $user,
         ]);
     }
@@ -72,7 +72,7 @@ class UserController extends AbstractController
             return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('back/user/edit.html.twig', [
+        return $this->renderForm('backoffice/user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
