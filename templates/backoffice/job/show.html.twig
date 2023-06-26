@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Job{% endblock %}
+{% block title %}Boulots{% endblock %}
 
 {% block body %}
-    <h1>Job</h1>
+    <h1>Les boulots</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Numéro</th>
                 <td>{{ job.id }}</td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                 <td>{{ job.duration }}</td>
             </tr>
             <tr>
-                <th>Nombre de postes vacants</th>
+                <th>Nombre de postes à pourvoir</th>
                 <td>{{ job.nbVacancy }}</td>
             </tr>
             <tr>

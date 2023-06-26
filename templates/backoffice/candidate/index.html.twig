@@ -4,14 +4,14 @@
 
 {% block body %}
     <h1>Liste des candidats</h1>
-    <a href="{{ path('app_back_candidate_new') }}">Créer un candidat</a>
+    <a href="{{ path('app_back_candidate_new') }}" class="btn btn-outline-primary">Créer un candidat</a>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
+                <th>Mot de passe</th>
+                <th>Civilité</th>
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Téléphone</th>
@@ -20,8 +20,7 @@
                 <th>Ville</th>
                 <th>Présentation</th>
                 <th>Date de création</th>
-                <th>MAJ</th>
-                <th>Genre</th>
+                <th>Date de mise à jour</th>
                 <th>Date de naissance</th>
                 <th>Avatar</th>
                 <th>actions</th>
@@ -32,8 +31,8 @@
             <tr>
                 <td>{{ candidate.id }}</td>
                 <td>{{ candidate.email }}</td>
-                <td>{{ candidate.roles ? candidate.roles|json_encode : '' }}</td>
                 <td>{{ candidate.password }}</td>
+                <td>{{ candidate.gender }}</td>
                 <td>{{ candidate.firstname }}</td>
                 <td>{{ candidate.lastname }}</td>
                 <td>{{ candidate.phone }}</td>
@@ -41,10 +40,9 @@
                 <td>{{ candidate.postalCode }}</td>
                 <td>{{ candidate.city }}</td>
                 <td>{{ candidate.presentation }}</td>
-                <td>{{ candidate.createdAt ? candidate.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ candidate.updatedAt ? candidate.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ candidate.gender }}</td>
-                <td>{{ candidate.birthday ? candidate.birthday|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ candidate.createdAt ? candidate.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ candidate.updatedAt ? candidate.updatedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ candidate.birthday ? candidate.birthday|date('Y-m-d') : '' }}</td>
                 <td>{{ candidate.avatar }}</td>
                 <td>
                     

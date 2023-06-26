@@ -10,9 +10,34 @@
 
     {% if app.user %}
         <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+            Vous etes connecté en tant que : {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}" class="btn btn-secondary">Se déconnecter</a>
         </div>
     {% endif %}
+
+    <style>
+        body {
+            background-color: #f0f0f0;
+            max-width: 100vw; 
+            padding: 1rem;
+        }
+        form {
+            max-width: 40rem;
+            margin: auto;
+        }
+        .login-section {
+            max-width: 20rem;
+            margin: auto;
+        }
+        label {
+            padding-top: 2rem;
+        }
+        button {
+            margin-top: 2rem;
+        }
+
+
+    </style>
+    <div class="login-section">
 
     <h1 class="h3 mb-3 font-weight-normal">Identifiez-vous</h1>
     <label for="inputEmail">Email</label>
@@ -35,7 +60,8 @@
     #}
 
     <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
+        Se connecter
     </button>
+    </div>
 </form>
 {% endblock %}

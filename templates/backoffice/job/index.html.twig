@@ -8,19 +8,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Entitled</th>
-                <th>DateFrom</th>
-                <th>DateTill</th>
-                <th>Duration</th>
-                <th>NbVacancy</th>
-                <th>Place</th>
+                <th>Numéro</th>
+                <th>intitulé</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Durée (si inférieur à 10h)</th>
+                <th>Nombre de poste à pourvoir</th>
+                <th>Adresse</th>
                 <th>Description</th>
-                <th>IsValid</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>PublishedAt</th>
-                <th>actions</th>
+                <th>Offre validée ?</th>
+                <th>Date de création</th>
+                <th>Date de mise à jour</th>
+                <th>Date de publication</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -35,17 +35,17 @@
                 <td>{{ job.place }}</td>
                 <td>{{ job.description }}</td>
                 <td>{{ job.isValid ? 'Yes' : 'No' }}</td>
-                <td>{{ job.createdAt ? job.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ job.updatedAt ? job.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ job.publishedAt ? job.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ job.createdAt ? job.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ job.updatedAt ? job.updatedAt|date('Y-m-d') : '' }}</td>
+                <td>{{ job.publishedAt ? job.publishedAt|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_job_show', {'id': job.id}) }}">show</a>
-                    <a href="{{ path('app_back_job_edit', {'id': job.id}) }}">edit</a>
+                    <a href="{{ path('app_back_job_show', {'id': job.id}) }}">Voir l'offre</a>
+                    <a href="{{ path('app_back_job_edit', {'id': job.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="13">Pas d'offre trouvée</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -1,17 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des entrerpises{% endblock %}
+{% block title %}Liste des entreprises{% endblock %}
 
 {% block body %}
+     <style>
+         body {
+            background-color: #f0f0f0;
+        }
+    </style>
+    
     <h1>Liste des entreprises</h1>
-    <a href="{{ path('app_back_company_new') }}">Créer une entreprise</a>
+
+   
+
+    <a href="{{ path('app_back_company_new') }}" class="btn btn-primary">Créer une entreprise</a>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Email</th>
                 <th>Roles</th>
-                <th>Password</th>
+                <th>Mot de passe</th>
+                <th>Nom de l'entreprise</th>
+                <th>Civilité</th>
                 <th>Prénom</th>
                 <th>Nom</th>
                 <th>Téléphone</th>
@@ -20,11 +31,9 @@
                 <th>Ville</th>
                 <th>Présentation</th>
                 <th>Date de création</th>
-                <th>MAJ</th>
-                <th>Genre</th>
+                <th>Date de mise à jour</th>
                 <th>Siret</th>
                 <th>Logo</th>
-                <th>Nom de l'entreprise</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -35,6 +44,8 @@
                 <td>{{ company.email }}</td>
                 <td>{{ company.roles ? company.roles|json_encode : '' }}</td>
                 <td>{{ company.password }}</td>
+                <td>{{ company.name }}</td>
+                <td>{{ company.gender }}</td>
                 <td>{{ company.firstname }}</td>
                 <td>{{ company.lastname }}</td>
                 <td>{{ company.phone }}</td>
@@ -42,15 +53,13 @@
                 <td>{{ company.postalCode }}</td>
                 <td>{{ company.city }}</td>
                 <td>{{ company.presentation }}</td>
-                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ company.gender }}</td>
+                <td>{{ company.createdAt ? company.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ company.updatedAt ? company.updatedAt|date('Y-m-d') : '' }}</td>
                 <td>{{ company.siret }}</td>
                 <td>{{ company.logo }}</td>
-                <td>{{ company.name }}</td>
                 <td>
-                    <a href="{{ path('app_back_company_show', {'id': company.id}) }}">Voir</a>
-                    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}">Modifier</a>
+                    <a href="{{ path('app_back_company_show', {'id': company.id}) }}" class="btn btn-primary">Voir</a>
+                    <a href="{{ path('app_back_company_edit', {'id': company.id}) }}" class="btn btn-primary">Modifier</a>
                 </td>
             
             </tr>

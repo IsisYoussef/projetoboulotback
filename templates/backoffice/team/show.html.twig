@@ -25,7 +25,7 @@
 				<td>{{ user.password }}</td>
 			</tr>
 			<tr>
-				<th>Genre :</th>
+				<th>Civilité :</th>
 				<td>{{ user.gender }}</td>
 			</tr>
 			<tr>
@@ -57,12 +57,12 @@
 				<td>{{ user.presentation }}</td>
 			</tr>
 			<tr>
-				<th>Fiche créée le :</th>
-				<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+				<th>Date de création</th>
+				<td>{{ user.createdAt ? user.createdAt|date('Y-m-d') : '' }}</td>
 			</tr>
 			<tr>
-				<th>Fiche mise à jour le :</th>
-				<td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+				<th>Date de mise à jour</th>
+				<td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d') : '' }}</td>
 			</tr>
 
 		</tbody>

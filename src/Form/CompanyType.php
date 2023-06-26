@@ -46,7 +46,12 @@ class CompanyType extends AbstractType
                     "placeholder" => "Nom du contact"
                 ]
             ])
-            ->add('phone')
+            ->add('phone', TextType::class, [
+                "label" => "Numéro de téléphone",
+                "attr" => [
+                    "placeholder" => "Numéro de téléphone de l'entreprise"
+                ]
+            ])
             ->add('address', TextType::class, [
                 "label" => "Adresse",
                 "attr" => [
