@@ -92,7 +92,7 @@ security:
         - {path: ^\/api\/\offres\/\d+$, roles: PUBLIC_ACCESS}
         - {path: ^\/api\/\offres\/\d+$, roles: ROLE_MANAGER, methods: [POST, PUT, DELETE]}
 
-        # /
+        
         
 
     

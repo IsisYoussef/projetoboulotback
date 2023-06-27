@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -79,7 +81,8 @@ class JobController extends AbstractController
         Request $request,
         SerializerInterface $serialiserInterface,
         JobRepository $jobRepository,
-        ValidatorInterface $validatorInterface
+        ValidatorInterface $validatorInterface,
+        MailerInterface $mailerInterface
     ) {
         $jsonContent = $request->getContent();
         try {
@@ -94,6 +97,18 @@ class JobController extends AbstractController
         }
 
         $jobRepository->add($job, true);
+
+        //---- Mail Mailgun -----
+        $newMail = new Email();
+        $newMail->from("admin@oboulot.io")
+        ->to("isisyoussef24@gmail.com")
+        ->subject("Une nouvelle offre est publiée")
+        ->text("Découvrir cette super offre")
+        ->html("<h1>Une nouvelle offre</h1>");
+
+        $mailerInterface->send($newMail);
+
+        // ----      ----
 
         return $this->json($job, Response::HTTP_CREATED, [], ["groups"=>["job_read"]]);
     }
