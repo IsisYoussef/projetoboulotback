@@ -18,17 +18,20 @@ class Category
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"job_read"})
+     * @groups({"category_browse"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @groups({"job_read"})
+     * @groups({"category_browse"})
      */
     private $title;
 
     /**
      * @ORM\OneToMany(targetEntity=Job::class, mappedBy="category")
+     * @groups({"category_browse"})
      */
     private $jobs;
 
