@@ -98,6 +98,7 @@ class Oboulot extends Fixture
         $allJobs = [];
         for ($i=0; $i <50; $i++) {
             $newJob = new Job();
+            $newCompany = new Company();
 
             $newJob->setEntitled("Offre n°" . $i . " - " . $faker->jobTitle());
             $newJob->setDateFrom(new DateTime("2023-02-03"));
@@ -120,6 +121,7 @@ class Oboulot extends Fixture
                 $manager->persist($newJob);
 
             }
+
         }
 
         $manager->flush();

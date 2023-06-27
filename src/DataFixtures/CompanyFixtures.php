@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\DataFixtures\Oboulot;
 use App\Entity\Company;
+use App\Entity\Job;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -61,6 +63,19 @@ class CompanyFixtures extends Fixture
 
             $manager->persist($newCompany);
         }
+            $allCompanies[] = $newCompany;
+
+
+            //création des associations entre job et company
+            foreach ($allJobs as $job) {
+
+                $randomJob = $allJobs[mt_rand(0, count($allJobs)-1)];
+                $newCompany->setJob($randomJob);
+                $manager->persist($newCompany);
+
+            }
+
+        
 
         $manager->flush();
     }
