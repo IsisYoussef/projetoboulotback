@@ -77,53 +77,9 @@ class Oboulot extends Fixture
 
 
 
-        // ---- Creation de category ----
 
-        $categories = ["Evenementiel", "Secrétariat", "Administratif", "Batiment", "Restauration", "Saisie informatique", "Phoning","Archivage", "Street-marketing"];
-        $allCategory = [];
-        foreach ($categories as $category) {
-            $newCategory = new Category();
-            $newCategory->setTitle($category);
 
-            $manager->persist($newCategory);
 
-            $allCategory[] = $newCategory;
-        }
 
-        //---- Creation Job ----
-
-        $faker = \Faker\Factory::create();
-        $fakerFr = \Faker\Factory::create('fr_FR');
-
-        $allJobs = [];
-        for ($i=0; $i <50; $i++) {
-            $newJob = new Job();
-            $newCompany = new Company();
-
-            $newJob->setEntitled("Offre n°" . $i . " - " . $faker->jobTitle());
-            $newJob->setDateFrom(new DateTime("2023-02-03"));
-            $newJob->setDateTill(new DateTime("2023-02-13"));
-            $newJob->setNbVacancy(mt_rand(1, 5));
-            $newJob->setPlace("Région parisienne");
-            $newJob->setDescription("lorem ipsum synopsis");
-            $newJob->setIsValid(true);
-            $newJob->setCreatedAt(new DateTime('now'));
-            $newJob->setPublishedAt(new DateTime('now'));
-
-            $manager->persist($newJob);
-
-            $allJobs[] = $newJob;
-
-            //création des associations entre category et job
-            foreach ($allCategory as $category) {
-                $randomCategory = $allCategory[mt_rand(0, count($allCategory)-1)];
-                $newJob->setCategory($randomCategory);
-                $manager->persist($newJob);
-
-            }
-
-        }
-
-        $manager->flush();
     }
 }

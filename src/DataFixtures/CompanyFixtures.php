@@ -65,16 +65,6 @@ class CompanyFixtures extends Fixture
         }
             $allCompanies[] = $newCompany;
 
-
-            //création des associations entre job et company
-            foreach ($allJobs as $job) {
-
-                $randomJob = $allJobs[mt_rand(0, count($allJobs)-1)];
-                $newCompany->setJob($randomJob);
-                $manager->persist($newCompany);
-
-            }
-
         
 
         $manager->flush();
