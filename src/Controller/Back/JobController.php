@@ -42,6 +42,7 @@ class JobController extends AbstractController
             $jobRepository->add($job, true);
 
         //---- Mail Mailgun -----
+        
         $newMail = new Email();
         $newMail->from("admin@oboulot.io")
         ->to("isisyoussef24@gmail.com")
