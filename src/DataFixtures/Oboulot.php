@@ -75,11 +75,6 @@ class Oboulot extends Fixture
 
         $manager->persist($employee);
 
-
-
-
-
-
-
+        $manager->flush();
     }
 }
